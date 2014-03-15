@@ -28,5 +28,17 @@ describe Discogs2::Resources::Artist do
     it "sets the name variations" do
       expect(artist.namevariations).to eq(["Megadeath"])
     end
+
+    it "creates Artists for members if provided" do
+      member = artist.members.first
+      expect(member.name).to eq("Al Pitrelli")
+      expect(member.resource_url).to eq("http://api.discogs.com/artists/271505")
+      expect(member.id).to eq(271505)
+      expect(member.active).to be_false
+    end
+    it "does not create members otherwise" do
+      member = artist.members.first
+      expect(member.members).to be_nil
+    end
   end
 end
