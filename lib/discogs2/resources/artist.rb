@@ -9,6 +9,7 @@ module Discogs2
                   :members,
                   :urls,
                   :images,
+                  :aliases,
                   :resource_url,
                   :id,
                   :data_quality,
@@ -34,6 +35,12 @@ module Discogs2
       def images=(images)
         unless images.blank?
           @images = images.map { |hsh| Image.new(hsh) }
+        end
+      end
+
+      def aliases=(aliases)
+        unless aliases.blank?
+          @aliases = aliases.map { |hsh| Artist.new(hsh) }
         end
       end
 

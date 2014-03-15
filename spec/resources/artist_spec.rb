@@ -60,5 +60,18 @@ describe Discogs2::Resources::Artist do
     it "does not create images if there were none in the src JSON" do
       expect(artist.members.first.images).to be_nil
     end
+
+    it "creates the Artist resources for aliases" do
+      alias_hsh = src_hash.dup
+      alias_hsh['aliases'] = [
+        {"id" => 12345, "name" => "Mega", "resource_url" => "http://www.google.com/"},
+        {"id" => 23451, "name" => "Deth", "resource_url" => "http://www.google.za/"}
+      ]
+      artist = Discogs2::Resources::Artist.from_hash(alias_hsh)
+      ali = artist.aliases.first
+      expect(ali.id).to eq(12345)
+      expect(ali.name).to eq("Mega")
+      expect(ali.resource_url).to eq("http://www.google.com/")
+    end
   end
 end
