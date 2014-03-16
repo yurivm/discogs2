@@ -20,7 +20,7 @@ module Discogs2
         def from_hash(src_hash)
           #extra slashes for profile for now
           src_hash['profile'] = Resource.escape_json_newlines(src_hash['profile'])
-          Artist.new(src_hash)
+          super
         end
       end
 
@@ -43,7 +43,7 @@ module Discogs2
           @aliases = aliases.map { |hsh| Artist.new(hsh) }
         end
       end
-
+      
     end
   end
 end

@@ -4,6 +4,8 @@ require "discogs2/wrapper"
 require "discogs2/resources/resource"
 require "discogs2/resources/image"
 require "discogs2/resources/artist"
+require "discogs2/resources/community"
+require "discogs2/resources/release"
 
 module Discogs2
   # Your code goes here...
