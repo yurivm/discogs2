@@ -35,6 +35,13 @@ module Discogs2
         @community = Community.new(community)
       end
 
+      def tracklist=(tracklist)
+        @tracklist = tracklist.map { |hsh| Track.new(hsh)}
+      end
+
+      def images=(images)
+        @images = images.map { |hsh| Image.new(hsh) }
+      end
 
     end
   end

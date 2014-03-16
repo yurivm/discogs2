@@ -7,19 +7,48 @@ describe Discogs2::Resources::Release do
     JSON
     JSON.parse(src)
   end
-  let(:release) { Discogs2::Resources::Release.from_hash(src_hash)}
+  let(:release) { Discogs2::Resources::Release.new(src_hash)}
 
-  describe ".from_hash" do
+  describe "#initialize" do
     ["id", "title", "resource_url", "uri", "status", "data_quality", "master_id", "master_url", "country", "year", "released", "released_formatted", "notes", "styles", "genres", "estimated_weight", "format_quantity"].each do |attribute|
       it "sets the #{attribute}" do
         expect(release.send(attribute.to_sym)).to eq(src_hash[attribute])
       end
     end
 
-    it "provides the community data" do
+    it "provides the community data (have and want, rating)" do
       community = release.community
       expect(community.have).to eq(122)
       expect(community.want).to eq(146)
+      expect(community.rating.count).to eq(31)
+      expect(community.rating.average).to eq(4.45)
+    end
+
+    it "creates the tracklist as an array of tracks" do
+      expect(release.tracklist).to be_a(Array)
+    end
+    it "creates the correct number of tracks" do
+      expect(release.tracklist.size).to eq(8)
+    end
+    it "populates the track attributes correctly" do
+      track = release.tracklist.first
+      expect(track.title).to eq("The Advent Of Panurge")
+      expect(track.position).to eq("A1")
+      expect(track.duration).to eq("") #it is not given 
+    end
+
+    it "creates the images as an array" do
+      expect(release.images).to be_a(Array)
+    end
+    it "creates the images as an array" do
+      expect(release.images.size).to eq(4)
+    end
+    it "populates the image attributes correctly" do
+      img = release.images.first
+      expect(img.type).to eq("primary")
+      expect(img.resource_url).to eq("http://api.discogs.com/image/R-584068-1275050106.jpeg")
+      expect(img.height).to eq(450)
+      expect(img.width).to eq(450)
     end
   end
 end

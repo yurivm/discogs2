@@ -13,16 +13,9 @@ module Discogs2
         @attrs
       end
 
-      def from_hash(src_hash)
-        self.new(src_hash)
-      end
-
-      protected
-
       def escape_json_newlines(str)
         str.gsub(/\r/, "\\r").gsub(/\n/, "\\n")
       end
-
 
     end
     

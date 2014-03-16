@@ -16,12 +16,9 @@ module Discogs2
                   :namevariations,
                   :active 
 
-      class << self
-        def from_hash(src_hash)
-          #extra slashes for profile for now
-          src_hash['profile'] = Resource.escape_json_newlines(src_hash['profile'])
-          super
-        end
+      def initialize(src_hash)
+        src_hash['profile'] = Resource.escape_json_newlines(src_hash['profile']) if src_hash.key?("profile")
+        super
       end
 
       protected
@@ -43,7 +40,7 @@ module Discogs2
           @aliases = aliases.map { |hsh| Artist.new(hsh) }
         end
       end
-      
+
     end
   end
 end
