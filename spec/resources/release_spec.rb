@@ -50,5 +50,26 @@ describe Discogs2::Resources::Release do
       expect(img.height).to eq(450)
       expect(img.width).to eq(450)
     end
+    
+    it "creates the labels as an array of the correct size" do
+      expect(release.labels.size).to eq(1)
+    end
+    it "populates the label attributes correctly" do
+      label = release.labels.first
+      expect(label.resource_url).to eq("http://api.discogs.com/labels/2266")
+      #expect(label.entity_type).to eq(1)
+      expect(label.catno).to eq("6360 080")
+      expect(label.id).to eq(2266)
+      expect(label.name).to eq("Vertigo")
+    end
+    it "creates the formats as an array of the correct size" do
+      expect(release.formats.size).to eq(1)
+    end
+    it "populates the format attributes correctly" do
+      format = release.formats.first
+      expect(format.descriptions).to eq(["LP", "Album"])
+      expect(format.qty).to eq("1")
+      expect(format.name).to eq("Vinyl")
+    end
   end
 end

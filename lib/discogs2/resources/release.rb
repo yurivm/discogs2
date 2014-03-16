@@ -43,6 +43,13 @@ module Discogs2
         @images = images.map { |hsh| Image.new(hsh) }
       end
 
+      def labels=(labels)
+        @labels = labels.map { |hsh| Label.new(hsh) }
+      end
+
+      def formats=(formats)
+        @formats = formats.map { |hsh| Format.new(hsh) }
+      end
     end
   end
 end
