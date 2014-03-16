@@ -5,6 +5,7 @@ require "discogs2/resources/resource"
 require "discogs2/resources/image"
 require "discogs2/resources/artist"
 require "discogs2/resources/community"
+require "discogs2/resources/track"
 require "discogs2/resources/release"
 
 module Discogs2
