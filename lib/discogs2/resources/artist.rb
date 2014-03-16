@@ -17,7 +17,7 @@ module Discogs2
                   :active 
 
       def initialize(src_hash)
-        src_hash['profile'] = Resource.escape_json_newlines(src_hash['profile']) if src_hash.key?("profile")
+        src_hash['profile'] = ::Discogs2::Utils.escape_json_newlines(src_hash['profile']) if src_hash.key?("profile")
         super
       end
 

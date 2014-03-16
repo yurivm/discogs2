@@ -1,5 +1,26 @@
 module Discogs2
   class Wrapper
     API_HOST = 'http://api.discogs.com'
+
+    attr_reader :user_agent
+
+    def initialize(user_agent)
+      @user_agent = user_agent
+    end
+
+    def get_artist(artist_id)
+      response = query_api("/artists/#{artist_id}")
+      escaped_response = ::Discogs2::Utils.escape_json_newlines(response)
+      Resources::Artist.new(JSON.parse(escaped_response))
+    end
+
+    private
+
+    def api_host
+      self.class::API_HOST
+    end
+
+    include RequestMethods
+
   end
 end
