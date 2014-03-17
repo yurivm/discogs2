@@ -95,7 +95,7 @@ describe Discogs2::Wrapper do
     it "populates the tracklist collection with the correct number of tracklist" do
       expect(release.tracklist.size).to eq(8)
     end
-    it "populates the image data correctly" do
+    it "populates the tracklist data correctly" do
       track = release.tracklist[1]
       expect(track.duration).to eq("")
       expect(track.position).to eq("A2")
@@ -103,12 +103,22 @@ describe Discogs2::Wrapper do
       expect(track.type_).to eq("track")
     end
 
-    xit "videos" do
-
+    it "initializes the extraartists as an array" do
+      expect(release.extraartists).to be_a(Array)
+    end
+    it "populates the extraartists collection with the correct number of extraartists" do
+      expect(release.extraartists.size).to eq(13)
+    end
+    it "populates the extraartists data correctly" do
+      eartist = release.extraartists.last
+      expect(eartist.anv).to eq("")
+      expect(eartist.join).to eq("")
+      expect(eartist.role).to eq("Saxophone, Trumpet, Mellophone, Lead Vocals, Backing Vocals")
+      expect(eartist.tracks).to eq("")
     end
 
-    xit "extraartists" do
-      
+    xit "videos" do
+
     end
 
   end
