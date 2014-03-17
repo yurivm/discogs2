@@ -1,3 +1,8 @@
+if ENV['SIMPLECOV']
+  require 'simplecov'
+  SimpleCov.start 
+end
+
 require 'bundler/setup'
 Bundler.setup
 
