@@ -43,7 +43,7 @@ describe Discogs2::Wrapper do
     it "initializes the images collection as an array" do
       expect(artist.images).to be_a(Array)
     end
-    it "populates the images collection with the correct number of artists" do
+    it "populates the images collection with the correct number of images" do
       expect(artist.images.size).to eq(4)
     end
     it "sets the image data correctly" do

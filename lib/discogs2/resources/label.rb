@@ -6,7 +6,20 @@ module Discogs2
                   :id,
                   :entity_type_name,
                   :name,
-                  :resource_url
+                  :resource_url,
+                  :releases_url,
+                  :profile,
+                  :data_quality,
+                  :contact_info,
+                  :parent_label,
+                  :sublabels,
+                  :urls,
+                  :images
+
+       def images=(images)
+         @images = images.map { |hsh| Image.new(hsh) } if images.present?
+       end
+
     end
   end
 end

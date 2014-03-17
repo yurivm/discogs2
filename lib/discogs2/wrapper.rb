@@ -26,6 +26,12 @@ module Discogs2
       Resources::MasterRelease.new(JSON.parse(escaped_response))
     end
 
+    def get_label(label_id)
+      response = query_api("/labels/#{label_id}")
+      escaped_response = ::Discogs2::Utils.escape_json_newlines(response)
+      Resources::Label.new(JSON.parse(escaped_response))
+    end
+
     private
 
     def api_host
