@@ -13,6 +13,7 @@ require "discogs2/resources/track"
 require "discogs2/resources/label"
 require "discogs2/resources/format"
 require "discogs2/resources/release"
+require "discogs2/resources/master_release"
 
 module Discogs2
   # Your code goes here...

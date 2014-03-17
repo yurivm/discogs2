@@ -32,7 +32,7 @@ module Discogs2
       protected
 
       def community=(community)
-        @community = Community.new(community)
+        @community = Community.new(community) if community.present?
       end
 
       def tracklist=(tracklist)
@@ -58,6 +58,11 @@ module Discogs2
       def extraartists=(extraartists)
         @extraartists = extraartists.map {|hsh| ExtraArtist.new(hsh)}
       end
+
+      def artists=(artists)
+        @artists = artists.map {|hsh| Artist.new(hsh)}
+      end
+
     end
   end
 end

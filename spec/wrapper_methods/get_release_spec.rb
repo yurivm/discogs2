@@ -131,6 +131,19 @@ describe Discogs2::Wrapper do
       expect(video.title).to eq("The Advent of Panurge - Gentle Giant (1972)")
     end
 
+    it "initializes the artists as an array" do
+      expect(release.artists).to be_a(Array)
+    end
+    it "populates the artists collection with the correct number of artists" do
+      expect(release.artists.size).to eq(1)
+    end
+    it "populates the artists data correctly" do
+      artist = release.artists.first
+      expect(artist.id).to eq(240248)
+      expect(artist.name).to eq("Gentle Giant")
+      expect(artist.resource_url).to eq("http://api.discogs.com/artists/240248")
+    end
+
   end
 
 end

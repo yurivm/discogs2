@@ -16,7 +16,7 @@ module Discogs2
     end
     
     def initialize(src_hash)
-      attrs.each { |attribute| set_attr(attribute, src_hash[attribute.to_s]) }
+      attrs.each { |attribute| set_attr(attribute, src_hash[attribute.to_s]) } if src_hash.present?
     end
 
     def attrs
