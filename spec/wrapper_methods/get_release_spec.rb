@@ -117,54 +117,20 @@ describe Discogs2::Wrapper do
       expect(eartist.tracks).to eq("")
     end
 
-    xit "videos" do
-
+    it "initializes the videos as an array" do
+      expect(release.videos).to be_a(Array)
+    end
+    it "populates the videos collection with the correct number of videos" do
+      expect(release.videos.size).to eq(6)
+    end
+    it "populates the videos data correctly" do
+      video = release.videos.first
+      expect(video.duration).to eq(282)
+      expect(video.embed).to be_true
+      expect(video.uri).to eq("http://www.youtube.com/watch?v=v3ozXQNsQYs")
+      expect(video.title).to eq("The Advent of Panurge - Gentle Giant (1972)")
     end
 
   end
 
-  #     "releases_url" => "http://api.discogs.com/artists/240248/releases",
-  #     "name" => "Gentle Giant",
-  #     "uri" => "http://www.discogs.com/artist/240248-Gentle-Giant",
-  #     "resource_url" => "http://api.discogs.com/artists/240248",
-  #     "id" => 240248,
-  #     "data_quality" => "Correct",
-  #     "namevariations" => ["G.G."],
-  #     "urls" => ["http://www.blazemonger.com/GG/"
-  #   }.each_pair do |key
-  #       expect(artist.send(key.to_sym)).to eq(value)
-  #     end
-  #   end
-
-  #   it "initializes the members collection as an array" do
-  #     expect(artist.members).to be_a(Array)
-  #   end
-  #   it "populates the members collection with the correct number of artists" do
-  #     expect(artist.members.size).to eq(8)
-  #   end
-  #   it "sets the member data correctly" do
-  #     member = artist.members.first
-  #     expect(member.name).to eq("Derek Shulman")
-  #     expect(member.resource_url).to eq("http://api.discogs.com/artists/342789")
-  #     expect(member.id).to eq(342789)
-  #     expect(member.active).to be_true      
-  #   end
-
-  #   it "initializes the images collection as an array" do
-  #     expect(artist.images).to be_a(Array)
-  #   end
-  #   it "populates the images collection with the correct number of artists" do
-  #     expect(artist.images.size).to eq(4)
-  #   end
-  #   it "sets the image data correctly" do
-  #     image = artist.images.last
-  #     expect(image.height).to eq(397)
-  #     expect(image.width).to eq(600)
-  #     expect(image.resource_url).to eq("http://api.discogs.com/image/A-240248-1303818003.jpeg")
-  #     expect(image.uri).to eq("http://api.discogs.com/image/A-240248-1303818003.jpeg")
-  #     expect(image.uri150).to eq("http://api.discogs.com/image/A-150-240248-1303818003.jpeg")
-  #     expect(image.type).to eq("secondary")
-  #   end
-  # end
-  
 end

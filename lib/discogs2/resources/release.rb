@@ -51,6 +51,10 @@ module Discogs2
         @formats = formats.map { |hsh| Format.new(hsh) }
       end
 
+      def videos=(videos)
+        @videos = videos.map { |hsh| Video.new(hsh) }
+      end
+
       def extraartists=(extraartists)
         @extraartists = extraartists.map {|hsh| ExtraArtist.new(hsh)}
       end
