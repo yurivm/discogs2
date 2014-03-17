@@ -14,6 +14,12 @@ module Discogs2
       Resources::Artist.new(JSON.parse(escaped_response))
     end
 
+    def get_release(release_id)
+      response = query_api("/releases/#{release_id}")
+      escaped_response = ::Discogs2::Utils.escape_json_newlines(response)
+      Resources::Release.new(JSON.parse(escaped_response))
+    end
+
     private
 
     def api_host

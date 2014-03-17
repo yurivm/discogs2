@@ -12,11 +12,4 @@ describe Discogs2::Wrapper do
     end
   end
 
-  describe "#get_release", :vcr do
-    it "returns the Artist object" do
-      artist = wrapper.get_artist(240248)
-      pp artist
-      expect(artist).to be_a(Discogs2::Resources::Artist)
-    end
-  end
 end
