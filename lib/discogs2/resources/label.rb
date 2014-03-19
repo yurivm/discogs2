@@ -20,6 +20,10 @@ module Discogs2
          @images = images.map { |hsh| Image.new(hsh) } if images.present?
        end
 
+       def sublabels=(sublabels)
+        @sublabels = sublabels.map { |hsh| Label.new(hsh) } if sublabels.present?
+       end
+
     end
   end
 end
