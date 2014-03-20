@@ -7,7 +7,6 @@ describe Discogs2::Wrapper do
     let(:label) { wrapper.get_label(654) }
     
     it "returns the Label object" do
-      pp label
       expect(label).to be_a(Discogs2::Resources::Label)
     end    
 
