@@ -39,6 +39,17 @@ module Discogs2
       Resources::SearchCollection.new(self, JSON.parse(escaped_response))
     end
 
+    def fetch_and_create_object(url, object_class)
+      response = query_api(url, {}, true) #awkward, will have to refactor this
+      escaped_response = ::Discogs2::Utils.escape_json_newlines(response)
+      case object_class.instance_method(:initialize).arity
+        when 2
+          object_class.new(self, JSON.parse(escaped_response))
+        else
+          object_class.new(JSON.parse(escaped_response))
+      end
+    end
+
     private
 
     def api_host

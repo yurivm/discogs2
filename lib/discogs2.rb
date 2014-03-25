@@ -14,6 +14,7 @@ require "discogs2/resources/label"
 require "discogs2/resources/format"
 require "discogs2/resources/release"
 require "discogs2/resources/master_release"
+require "discogs2/resources/search_result"
 require "discogs2/resources/search_collection"
 
 module Discogs2

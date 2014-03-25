@@ -8,8 +8,8 @@ module Discogs2
   module RequestMethods
     
     # Queries the API and handles the response.
-    def query_api(path, params={})
-      response = perform_request(path, params)
+    def query_api(path, params = {}, skip_building_url = false)
+      response = perform_request(path, params, skip_building_url)
 
       raise "Unknown resource #{path}" if response.code == "404"
       raise "Internal server error when querying #{path}" if response.code == "500"
@@ -36,8 +36,12 @@ module Discogs2
       clean_path.join
     end
     
-    def perform_request(path, params={})
-      uri = build_uri(path, params)
+    def perform_request(path_or_uri, params={}, skip_building_url = false)
+      uri = if skip_building_url
+        URI.parse(path_or_uri)
+      else
+        build_uri(path_or_uri, params)
+      end
       request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
       request.add_field("Accept", "application/json")
       request.add_field("Accept-Encoding", "gzip,deflate")

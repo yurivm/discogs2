@@ -21,6 +21,10 @@ module Discogs2
         @pagination.page
       end
 
+      def prev_url
+        @pagination.urls['prev']
+      end
+
       def next_url
         @pagination.urls['next']
       end
@@ -29,10 +33,34 @@ module Discogs2
         @pagination.urls['last']
       end
 
+      def prev_page
+        if prev_url.present?
+          @wrapper.fetch_and_create_object(prev_url, SearchCollection)
+        else
+          raise "Prev url is not set. You are probably at the very first search result page"
+        end
+      end
+
+      def next_page
+        if next_url.present?
+          @wrapper.fetch_and_create_object(next_url, SearchCollection)
+        else
+          raise "Next url is not set. You have probably reached the last search result page"
+        end
+      end
+
+      def last_page
+        @wrapper.fetch_and_create_object(last_url, SearchCollection)
+      end
+
       protected
 
       def pagination=(pages)
         @pagination = OpenStruct.new(pages)
+      end
+
+      def results=(results)
+        @results = results.map {|hsh| SearchResult.new(hsh)}
       end
 
     end

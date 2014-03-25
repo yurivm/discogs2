@@ -29,7 +29,8 @@ describe Discogs2::RequestMethods do
     end
   end
 
-  describe "#perform_request" do
+  describe "#query_api" do
+    it "raises "
   end
 
 end
