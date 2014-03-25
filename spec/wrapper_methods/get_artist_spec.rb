@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Discogs2::Wrapper do
   let(:wrapper) { Discogs2::Wrapper.new("Discogs2 gem: test") }
 
-  describe "#get_artist", :vcr => {:re_record_interval => 7200} do
+  describe "#get_artist", :vcr do
     let(:artist) { wrapper.get_artist(240248) }
     
     it "returns the Artist object" do

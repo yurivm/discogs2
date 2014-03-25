@@ -6,8 +6,8 @@ describe Discogs2::Wrapper do
   def release
     @cached_master_release ||= wrapper.get_master_release(32937)
   end
-  
-  describe "#get_master_release", :vcr => {:re_record_interval => 7200} do
+
+  describe "#get_master_release", :vcr do
     
     it "returns the MasterRelease object" do
       expect(release).to be_a(Discogs2::Resources::MasterRelease)
