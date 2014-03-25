@@ -60,7 +60,7 @@ describe Discogs2::Wrapper do
       expect(label.sublabels).to be_a(Array)
     end
     it "populates the sublabels collection with the correct number of sublabels" do
-      expect(label.sublabels.count).to eq(48) #zomg you've been productive (c)
+      expect(label.sublabels.count).to eq(47) #zomg you've been productive (c)
     end
     it "sets the sublabel data correctly" do
       sublabel = label.sublabels.first

@@ -38,7 +38,6 @@ module Discogs2
     
     def perform_request(path, params={})
       uri = build_uri(path, params)
-
       request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
       request.add_field("Accept", "application/json")
       request.add_field("Accept-Encoding", "gzip,deflate")

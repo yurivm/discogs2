@@ -32,6 +32,13 @@ module Discogs2
       Resources::Label.new(JSON.parse(escaped_response))
     end
 
+    def search(query, opt_params = {})
+      params = { q: query, page: 1}.merge(opt_params)
+      response = query_api("/database/search", params)
+      escaped_response = ::Discogs2::Utils.escape_json_newlines(response)
+      Resources::SearchCollection.new(self, JSON.parse(escaped_response))
+    end
+
     private
 
     def api_host
