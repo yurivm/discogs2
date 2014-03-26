@@ -38,8 +38,8 @@ describe Discogs2::Wrapper do
     end
     it "sets the community data correctly" do
       community = release.community
-      expect(community.have).to eq(122)
-      expect(community.want).to eq(150)
+      expect(community.have).to be > 50
+      expect(community.want).to be > 100
       expect(community.rating.count).to eq(31)
       expect(community.rating.average).to eq(4.45)
     end
