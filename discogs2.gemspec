@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["yurivm"]
   spec.email         = ["yuri.veremeyenko@gmail.com"]
   spec.summary       = %q{A Ruby wrapper for the Discogs API v2. Json, no XML.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.description   = %q{A yet another Ruby wrapper based on the discogs gem by Andrew Buntine that uses JSON instead of XML}
   spec.homepage      = ""
   spec.license       = "MIT"
 
