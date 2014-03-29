@@ -17,8 +17,12 @@ module Discogs2
         @pagination.items
       end
 
-      def page
+      def current_page
         @pagination.page
+      end
+
+      def total_pages
+        @pagination.pages
       end
 
       def prev_url

@@ -11,11 +11,12 @@ describe Discogs2::Wrapper do
     it "provides pagination methods" do
       expect(search_result.per_page).to eq(50)
       expect(search_result.items).to be > 1000
-      expect(search_result.page).to eq(1)
+      expect(search_result.current_page).to eq(1)
+      expect(search_result.total_pages).to eq(1158)
     end
     it "provides the next/last urls" do
       expect(search_result.next_url).to eq("http://api.discogs.com/database/search?q=Jethro%2520Tull&per_page=50&page=2")
-      expect(search_result.last_url).to eq("http://api.discogs.com/database/search?q=Jethro%2520Tull&per_page=50&page=1155")
+      expect(search_result.last_url).to eq("http://api.discogs.com/database/search?q=Jethro%2520Tull&per_page=50&page=1158")
     end
     it "provides results as an array" do
       expect(search_result.results).to be_a(Array)
