@@ -29,6 +29,9 @@ module Discogs2
                   :identifiers,
                   :tracklist
 
+      alias :discogs_release_id :id
+      alias :discogs_master_id :master_id
+      
       protected
 
       def community=(community)

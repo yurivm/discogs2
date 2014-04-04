@@ -26,7 +26,9 @@ describe Discogs2::Wrapper do
        "styles" => ["Prog Rock"],
        "genres" => ["Rock"],
        "estimated_weight" => 230,
-       "format_quantity" => 1
+       "format_quantity" => 1,
+       "discogs_release_id" => 584068,
+       "discogs_master_id" => 15513,
     }.each_pair do |key, value|
       it "sets the attribute #{key} correctly" do
         expect(release.send(key.to_sym)).to eq(value)
