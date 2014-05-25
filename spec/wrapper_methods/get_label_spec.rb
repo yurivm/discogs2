@@ -18,17 +18,18 @@ describe Discogs2::Wrapper do
       "entity_type" => nil,
       "entity_type_name" => nil,
       "name" => "Capitol Records",
-      "profile" => "[b]Please note, many Capitol Records issues also carry an EMI logo. This is not a label and EMI should not be added as a label, it instead indicates that Capitol was part of the EMI Group. For lps it appears mandatory to describe the label design, cause there very often different version are available.[/b]\r\n\r\nThe Capitol Records company was founded by the songwriters Johnny Mercer, Buddy DeSylva and record store owner Glenn Wallichs on April 9, 1942 in Hollywood, California. By 1946 Capitol had sold 42 million records and was established as one of the Big Six studios.\r\n\r\nIn 1955, the British record company EMI acquired Capitol Records for $8.5 million. In 1979, Capitol was made part of the EMI Music Worldwide division. In 2001, EMI merged Capitol Records label with the Priority Records label.\r\n\r\nIn September 2012 Capitol Records was purchased by Universal Music Group\r\n\r\nLabel Code: LC 0148 / LC 00148",
+      #"profile" => "[b]Please note, many Capitol Records issues also carry an EMI logo. This is not a label and EMI should not be added as a label; it instead indicates that Capitol was part of the EMI Group. For LPs it appears mandatory to describe the label design, because very often different versions are available. See vinylbeat.com & friktech.com links below.[/b]\r\n\r\nThe Capitol Records company was founded by the songwriters Johnny Mercer, Buddy DeSylva and record store owner Glenn Wallichs on April 9, 1942 in Hollywood, California. By 1946 Capitol had sold 42 million records and was established as one of the Big Six studios.\r\n\r\nIn 1955, the British record company EMI acquired Capitol Records for $8.5 million. In 1979, Capitol was made part of the EMI Music Worldwide division. In 2001, EMI merged Capitol Records label with the Priority Records label.\r\n\r\nIn September 2012 Capitol Records was purchased by Universal Music Group\r\n\r\nLabel Code: LC 0148 / LC 00148",
       "resource_url" => "http://api.discogs.com/labels/654",
       "releases_url" => "http://api.discogs.com/labels/654/releases",
       "urls" => [
-         "http://www.capitolrecords.com",
-         "http://www.hollywoodandvine.com",
-         "http://www.friktech.com/btls/capitol/capitollabels.pdf",
-         "http://en.wikipedia.org/wiki/Capitol_Records",
-         "http://eighthavenue.com/capitol.htm"
+        "http://www.capitolrecords.com",
+        "http://www.hollywoodandvine.com",
+        "http://www.friktech.com/btls/capitol/capitollabels.pdf",
+        "http://en.wikipedia.org/wiki/Capitol_Records",
+        "http://eighthavenue.com/capitol.htm",
+        "http://www.vinylbeat.com/cgi-bin/labelfocus.cgi?label=CAPITOL&label_section=A,B,C"      
       ],
-      "data_quality" => "Needs Vote",
+      "data_quality" => "Correct",
       "parent_label" => {
         "id" => 38404,
         "name" => "Universal Music Group",
@@ -38,6 +39,10 @@ describe Discogs2::Wrapper do
       it "sets the attribute #{key} correctly" do
         expect(label.send(key.to_sym)).to eq(value)
       end
+    end
+
+    it "sets the profile" do
+      expect(label.profile).to match(/^\[b\]Please note, many Capitol Records issues also carry an EMI logo/) 
     end
 
     it "initializes the images collection as an array" do
@@ -60,7 +65,7 @@ describe Discogs2::Wrapper do
       expect(label.sublabels).to be_a(Array)
     end
     it "populates the sublabels collection with the correct number of sublabels" do
-      expect(label.sublabels.count).to eq(47) #zomg you've been productive (c)
+      expect(label.sublabels.count).to eq(49) #zomg you've been productive (c)
     end
     it "sets the sublabel data correctly" do
       sublabel = label.sublabels.first
