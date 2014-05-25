@@ -42,8 +42,8 @@ describe Discogs2::Wrapper do
       community = release.community
       expect(community.have).to be > 50
       expect(community.want).to be > 100
-      expect(community.rating.count).to eq(31)
-      expect(community.rating.average).to eq(4.45)
+      expect(community.rating.count).to eq(34)
+      expect(community.rating.average).to eq(4.44)
     end
 
     it "initializes the formats as an array" do
@@ -123,7 +123,7 @@ describe Discogs2::Wrapper do
       expect(release.videos).to be_a(Array)
     end
     it "populates the videos collection with the correct number of videos" do
-      expect(release.videos.size).to eq(6)
+      expect(release.videos.size).to eq(11)
     end
     it "populates the videos data correctly" do
       video = release.videos.first
