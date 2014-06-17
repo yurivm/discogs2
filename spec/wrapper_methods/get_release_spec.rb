@@ -42,8 +42,10 @@ describe Discogs2::Wrapper do
       community = release.community
       expect(community.have).to be > 50
       expect(community.want).to be > 100
-      expect(community.rating.count).to eq(34)
-      expect(community.rating.average).to eq(4.44)
+      expect(community.rating.count).to be_a(Integer) 
+      expect(community.rating.count).to be > 0
+      expect(community.rating.average).to be > 0 
+      expect(community.rating.average).to be_a(Float) 
     end
 
     it "initializes the formats as an array" do

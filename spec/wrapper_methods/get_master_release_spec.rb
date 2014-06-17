@@ -63,7 +63,8 @@ describe Discogs2::Wrapper do
       expect(release.videos).to be_a(Array)
     end
     it "populates the videos collection with the correct number of videos" do
-      expect(release.videos.size).to eq(4)
+      expect(release.videos.size).to be_a(Integer) #this changes all the time
+      expect(release.videos.size).to be > 0 
     end
     it "populates the video data correctly" do
       video = release.videos.first
