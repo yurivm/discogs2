@@ -53,7 +53,6 @@ Get information:
     search.results.first.title              # "Jethro Tull - Aqualung"
     search_results.next_page                # #<Discogs2::Resources::SearchCollection...>
 
-
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/discogs2/fork )
