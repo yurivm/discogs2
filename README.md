@@ -26,32 +26,33 @@ Using discogs2 is very similar to discogs.
 
 Create a wrapper using your application name:
   
-  require 'discogs2'
-  wrapper = Discogs::Wrapper.new("My awesome web app")
+    require 'discogs2'
+    wrapper = Discogs::Wrapper.new("My awesome web app")
 
 Get information:
 
-  artist = wrapper.get_artist(240248)  
-  master_release = wrapper.get_master_release(32937)
-  release = wrapper.get_release(584068)
-  search = wrapper.search("Jethro Tull")
+    artist = wrapper.get_artist(240248)  
+    master_release = wrapper.get_master_release(32937)
+    release = wrapper.get_release(584068)
+    search = wrapper.search("Jethro Tull")
 
-  artist.name                             # => "Gentle Giant"
-  artist.members.count                    # => 8
-  artist.members.first.name               # => "Derek Shulman"
+    artist.name                             # => "Gentle Giant"
+    artist.members.count                    # => 8
+    artist.members.first.name               # => "Derek Shulman"
 
-  release.title                           # => "Octopus"
-  release.community.have                  # => 136
-  release.community.want                  # => 168
-  release.community.rating                # #<OpenStruct count=36, average=4.44>
+    release.title                           # => "Octopus"
+    release.community.have                  # => 136
+    release.community.want                  # => 168
+    release.community.rating                # #<OpenStruct count=36, average=4.44>
 
-  master_release.title                    # "Rust In Peace"
-  master_release.images.first.uri         # "http://api.discogs.com/image/R-3262407-1322894355.jpeg"
+    master_release.title                    # "Rust In Peace"
+    master_release.images.first.uri         # "http://api.discogs.com/image/R-3262407-1322894355.jpeg"
 
-  search.items                            # 60717
-  search.results.first.format             # ["Vinyl", "Album", "LP"]
-  search.results.first.title              # "Jethro Tull - Aqualung"
-  search_results.next_page                # #<Discogs2::Resources::SearchCollection...>
+    search.items                            # 60717
+    search.results.first.format             # ["Vinyl", "Album", "LP"]
+    search.results.first.title              # "Jethro Tull - Aqualung"
+    search_results.next_page                # #<Discogs2::Resources::SearchCollection...>
+
 
 ## Contributing
 
